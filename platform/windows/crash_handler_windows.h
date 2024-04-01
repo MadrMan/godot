@@ -39,7 +39,7 @@
 #define CRASH_HANDLER_EXCEPTION 1
 
 #ifdef _MSC_VER
-extern DWORD CrashHandlerException(EXCEPTION_POINTERS *ep);
+extern LONG WINAPI CrashHandlerException(EXCEPTION_POINTERS *ep);
 #endif
 
 #endif
