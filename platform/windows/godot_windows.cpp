@@ -214,14 +214,9 @@ int main(int argc, char **argv) {
 	// _argc and _argv are ignored
 	// we are going to use the WideChar version of them instead
 #ifdef CRASH_HANDLER_EXCEPTION
-	__try {
-		return _main();
-	} __except (CrashHandlerException(GetExceptionInformation())) {
-		return 1;
-	}
-#else
-	return _main();
+	SetUnhandledExceptionFilter(CrashHandlerException);
 #endif
+	return _main();
 }
 
 HINSTANCE godot_hinstance = nullptr;

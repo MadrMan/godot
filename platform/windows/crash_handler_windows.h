@@ -38,7 +38,7 @@
 #if defined(DEBUG_ENABLED) && defined(_MSC_VER)
 #define CRASH_HANDLER_EXCEPTION 1
 
-extern DWORD CrashHandlerException(EXCEPTION_POINTERS *ep);
+extern LONG WINAPI CrashHandlerException(EXCEPTION_POINTERS *ep);
 #endif
 
 class CrashHandler {
