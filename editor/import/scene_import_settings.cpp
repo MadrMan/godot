@@ -307,6 +307,7 @@ void SceneImportSettings::_fill_scene(Node *p_node, TreeItem *p_parent_item) {
 		mesh_node->set_transform(src_mesh_node->get_transform());
 		mesh_node->set_skin(src_mesh_node->get_skin());
 		mesh_node->set_skeleton_path(src_mesh_node->get_skeleton_path());
+		mesh_node->set_visible(src_mesh_node->is_visible());
 		if (src_mesh_node->get_mesh().is_valid()) {
 			Ref<ImporterMesh> editor_mesh = src_mesh_node->get_mesh();
 			mesh_node->set_mesh(editor_mesh->get_mesh());
@@ -1251,6 +1252,7 @@ void SceneImportSettings::_save_dir_callback(const String &p_path) {
 						item->set_metadata(0, E.key);
 						item->set_editable(0, true);
 						item->set_checked(0, true);
+						name = name.validate_filename();
 						String path = p_path.path_join(name);
 						if (external_extension_type->get_selected() == 0) {
 							path += ".tres";
@@ -1304,6 +1306,7 @@ void SceneImportSettings::_save_dir_callback(const String &p_path) {
 						item->set_metadata(0, E.key);
 						item->set_editable(0, true);
 						item->set_checked(0, true);
+						name = name.validate_filename();
 						String path = p_path.path_join(name);
 						if (external_extension_type->get_selected() == 0) {
 							path += ".tres";
@@ -1356,6 +1359,7 @@ void SceneImportSettings::_save_dir_callback(const String &p_path) {
 					item->set_metadata(0, E.key);
 					item->set_editable(0, true);
 					item->set_checked(0, true);
+					name = name.validate_filename();
 					String path = p_path.path_join(name);
 					if (external_extension_type->get_selected() == 0) {
 						path += ".tres";
